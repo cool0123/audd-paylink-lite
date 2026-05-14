@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AUDD PayLink Lite</title>
+    <meta
+      name="description"
+      content="A lightweight AUDD payment-link and merchant settlement dashboard concept for Solana builders."
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <nav class="nav" aria-label="Primary navigation">
+        <a class="brand" href="#top" aria-label="AUDD PayLink Lite home">
+          <span class="brand-mark">A$</span>
+          <span>AUDD PayLink Lite</span>
+        </a>
+        <div class="nav-links">
+          <a href="#create">Create</a>
+          <a href="#dashboard">Dashboard</a>
+          <a href="#settlement">Settlement</a>
+        </div>
+      </nav>
+
+      <section id="top" class="hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Solana merchant payments · AUDD stablecoin concept</p>
+          <h1>Simple AUDD payment links for online merchants and creators.</h1>
+          <p class="hero-text">
+            Generate AUD-denominated payment pages, show QR-ready checkout details,
+            track payment status, and export a settlement CSV without building a custom checkout.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#create">Create demo link</a>
+            <a class="button secondary" href="#settlement">View settlement flow</a>
+          </div>
+        </div>
+        <aside class="hero-card" aria-label="Demo summary">
+          <div>
+            <span class="metric-label">Grant ask</span>
+            <strong>1,000 AUDD</strong>
+          </div>
+          <div>
+            <span class="metric-label">MVP scope</span>
+            <strong>Payment links + settlement dashboard</strong>
+          </div>
+          <div>
+            <span class="metric-label">Mode</span>
+            <strong>Safe demo, no private keys</strong>
+          </div>
+        </aside>
+      </section>
+    </header>
+
+    <main>
+      <section class="section" aria-labelledby="problem-title">
+        <div class="section-heading">
+          <p class="eyebrow">Problem</p>
+          <h2 id="problem-title">AUDD needs merchant-ready payment UX.</h2>
+        </div>
+        <div class="feature-grid">
+          <article class="feature-card">
+            <h3>No custom checkout</h3>
+            <p>Small merchants can create shareable payment pages without writing Solana integration code.</p>
+          </article>
+          <article class="feature-card">
+            <h3>AUD-denominated flow</h3>
+            <p>Amounts are tracked in AUDD, making settlement clearer for Australian-dollar use cases.</p>
+          </article>
+          <article class="feature-card">
+            <h3>Reconciliation</h3>
+            <p>The dashboard stores payment references and exports CSV rows for simple bookkeeping.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="create" class="section two-column" aria-labelledby="create-title">
+        <div>
+          <p class="eyebrow">Demo</p>
+          <h2 id="create-title">Create an AUDD payment link.</h2>
+          <p>
+            This demo keeps everything in the browser. It uses a configurable AUDD mint placeholder
+            and never requests wallet signing or private credentials.
+          </p>
+          <form id="paylink-form" class="form-card">
+            <label>
+              Merchant name
+              <input id="merchant" name="merchant" value="Harbour Coffee" required />
+            </label>
+            <label>
+              Amount in AUDD
+              <input id="amount" name="amount" type="number" min="1" step="0.01" value="42.50" required />
+            </label>
+            <label>
+              Customer note
+              <input id="note" name="note" value="Wholesale coffee beans invoice #1042" required />
+            </label>
+            <label>
+              Receiving Solana wallet
+              <input id="wallet" name="wallet" value="MerchantDemoWallet111111111111111111111111111" required />
+            </label>
+            <button class="button primary full" type="submit">Generate payment link</button>
+          </form>
+        </div>
+        <aside class="checkout-card" aria-live="polite">
+          <div class="checkout-topline">
+            <span>Checkout preview</span>
+            <span class="status-pill">Demo</span>
+          </div>
+          <h3 id="preview-title">Harbour Coffee</h3>
+          <p id="preview-note">Wholesale coffee beans invoice #1042</p>
+          <div class="amount-row">
+            <strong id="preview-amount">42.50 AUDD</strong>
+            <span>on Solana</span>
+          </div>
+          <div id="qr" class="qr" aria-label="Deterministic demo QR pattern"></div>
+          <p class="paylink" id="paylink-output">pay/audd-harbour-coffee-4250</p>
+          <button id="copy-link" class="button secondary full" type="button">Copy demo link</button>
+        </aside>
+      </section>
+
+      <section id="dashboard" class="section" aria-labelledby="dashboard-title">
+        <div class="section-heading">
+          <p class="eyebrow">Merchant dashboard</p>
+          <h2 id="dashboard-title">Track payment links and settlement state.</h2>
+        </div>
+        <div class="table-card">
+          <table>
+            <thead>
+              <tr>
+                <th>Link</th>
+                <th>Customer note</th>
+                <th>Amount</th>
+                <th>Status</th>
+                <th>Reference</th>
+              </tr>
+            </thead>
+            <tbody id="payment-table"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="settlement" class="section two-column" aria-labelledby="settlement-title">
+        <div>
+          <p class="eyebrow">Settlement</p>
+          <h2 id="settlement-title">Export accounting-ready rows.</h2>
+          <p>
+            Merchants can keep a simple record of paid, pending, and expired AUDD payment links.
+            A production version would verify token transfers on Solana with the official AUDD mint.
+          </p>
+          <div class="hero-actions">
+            <button id="export-csv" class="button primary" type="button">Export CSV</button>
+            <button id="mark-paid" class="button secondary" type="button">Mark latest as paid</button>
+          </div>
+        </div>
+        <div class="code-card">
+          <span>CSV preview</span>
+          <pre id="csv-preview"></pre>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>AUDD PayLink Lite is a grant MVP concept by cool0123.</p>
+      <p>No private keys, secrets, or real payment execution are stored in this demo.</p>
+    </footer>
+
+    <script src="app.js" type="module"></script>
+  </body>
+</html>

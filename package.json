@@ -1,0 +1,1 @@
+{"name":"audd-paylink-lite","version":"0.1.0","private":true,"type":"module","scripts":{"check":"node --check app.js && node verify.mjs","serve":"node server.mjs"},"engines":{"node":">=18"}}
