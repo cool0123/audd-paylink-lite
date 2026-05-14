@@ -22,9 +22,9 @@ The product is designed around a practical Australian-dollar stablecoin use case
 ## Links
 
 ```text
-GitHub: https://github.com/cool0123/birdeye-meme-scout/tree/main/audd-paylink-lite
-Demo: https://cool0123.github.io/birdeye-meme-scout/audd-paylink-lite/
-X / walkthrough: [post URL]
+GitHub: https://github.com/cool0123/audd-paylink-lite
+Demo: https://cool0123.github.io/audd-paylink-lite/
+X / walkthrough: https://x.com/cool012312600/status/2055002912087228439
 ```
 
 ## Next production steps

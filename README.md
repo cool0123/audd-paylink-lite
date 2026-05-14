@@ -76,7 +76,7 @@ http://localhost:5190
 Use these once published:
 
 ```text
-GitHub: https://github.com/cool0123/birdeye-meme-scout/tree/main/audd-paylink-lite
-Demo: https://cool0123.github.io/birdeye-meme-scout/audd-paylink-lite/
-Walkthrough/X: [post URL]
+GitHub: https://github.com/cool0123/audd-paylink-lite
+Demo: https://cool0123.github.io/audd-paylink-lite/
+Walkthrough/X: https://x.com/cool012312600/status/2055002912087228439
 ```
