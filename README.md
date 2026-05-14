@@ -73,7 +73,7 @@ http://localhost:5190
 
 ## Submission links
 
-Use these once published:
+Published proof links:
 
 ```text
 GitHub: https://github.com/cool0123/audd-paylink-lite
